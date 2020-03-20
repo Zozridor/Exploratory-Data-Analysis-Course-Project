@@ -1,3 +1,5 @@
+# Baltimore has seen greater change in motor vehicle emissions
+
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
@@ -37,3 +39,4 @@ barplot(yearSumsLosAngelesMV$Emissions, yearSumsLosAngelesMV$year,
         main = "Emissions by Year (Motor Vehicles in L.A.)",
         xlab = "Year", ylab = "Emissions",
         names.arg = c("1999","2002","2005","2008"))
+
