@@ -30,8 +30,8 @@ total <- dplyr::bind_rows(total, NonRoad)
 total[is.na(total)] <- "NonRoad"
 
 df.long <- reshape2::melt(total, id.vars = c("Category","source"))
-ggplot(df.long, aes(Category, value, fill=source))+
-  geom_bar(stat="identity")+
-  facet_grid(cols = vars(source))+
+ggplot(df.long, aes(Category, value, col=source))+
+  geom_line(stat="identity")+
+  facet_grid(rows = vars(source), scales="free")+
   labs(x="Year",y="PM2.5 Emission (tons)")
   
