@@ -5,16 +5,18 @@ library(reshape2)
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
-sourcePoint <- subset(NEI, type == "POINT")
+baltimore <- subset(NEI, fips== "24510")
+
+sourcePoint <- subset(baltimore, type == "POINT")
 Point <- aggregate(sourcePoint$Emissions, by=list(Category=sourcePoint$year), FUN=sum, na.omit=TRUE)
 
-sourceNonPoint <- subset(NEI, type == "NONPOINT")
+sourceNonPoint <- subset(baltimore, type == "NONPOINT")
 NonPoint <- aggregate(sourceNonPoint$Emissions, by=list(Category=sourceNonPoint$year), FUN=sum, na.omit=TRUE)
 
-sourceOnRoad <- subset(NEI, type == "ON-ROAD")
+sourceOnRoad <- subset(baltimore, type == "ON-ROAD")
 OnRoad <- aggregate(sourceOnRoad$Emissions, by=list(Category=sourceOnRoad$year), FUN=sum, na.omit=TRUE)
 
-sourceNonRoad <- subset(NEI, type == "NON-ROAD")
+sourceNonRoad <- subset(baltimore, type == "NON-ROAD")
 NonRoad <- aggregate(sourceNonRoad$Emissions, by=list(Category=sourceNonRoad$year), FUN=sum, na.omit=TRUE)
 
 total <- Point
